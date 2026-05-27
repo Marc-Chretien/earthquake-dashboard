@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./index.css";
+import StatCards from "./components/StatCards";
 
 function App() {
   const [quakes, setQuakes] = useState([]);
@@ -32,8 +33,7 @@ function App() {
         <p>{quakes.length} earthquakes in the last 24 hours</p>
       </header>
       <main>
-        <p>Data loaded. Components coming next.</p>
-        <p>Sample: {quakes[0]?.properties.place}</p>
+        <StatCards quakes={quakes} />
       </main>
     </div>
   );
