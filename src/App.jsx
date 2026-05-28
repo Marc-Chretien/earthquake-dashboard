@@ -3,11 +3,13 @@ import "./index.css";
 import StatCards from "./components/StatCards";
 import RecentList from "./components/RecentList";
 import EarthquakeMap from "./components/EarthquakeMap";
+import RiskPanel from "./components/RiskPanel";
 
 function App() {
   const [quakes, setQuakes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [locationQuakes, setLocationQuakes] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -37,8 +39,11 @@ function App() {
       <main>
         <StatCards quakes={quakes} />
         <div className="dashboard-grid">
-          <EarthquakeMap quakes={quakes} />
-          <RecentList quakes={quakes} />
+          <EarthquakeMap quakes={quakes} locationQuakes={locationQuakes} />
+          <div className="side-panel">
+            <RiskPanel onLocationQuakes={setLocationQuakes} />
+            <RecentList quakes={quakes} />
+          </div>
         </div>
       </main>
     </div>
