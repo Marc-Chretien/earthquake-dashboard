@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import "./index.css";
 import StatCards from "./components/StatCards";
+import RecentList from "./components/RecentList";
+import EarthquakeMap from "./components/EarthquakeMap";
 
 function App() {
   const [quakes, setQuakes] = useState([]);
@@ -34,6 +36,10 @@ function App() {
       </header>
       <main>
         <StatCards quakes={quakes} />
+        <div className="dashboard-grid">
+          <EarthquakeMap quakes={quakes} />
+          <RecentList quakes={quakes} />
+        </div>
       </main>
     </div>
   );
